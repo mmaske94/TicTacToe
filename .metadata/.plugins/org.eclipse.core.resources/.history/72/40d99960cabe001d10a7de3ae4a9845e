@@ -1,0 +1,87 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class TicTacToe {
+
+	public static void main(String[] args) {
+		
+		char [][] gameBoard = {
+				{'1', '|','2', '|','3' }, 
+				{'-', '+','-', '+','-' },
+				{'4', '|','5', '|','6' },
+				{'-', '+','-', '+','-' },
+				{'7', '|','8', '|','9' }};
+				
+		
+		printGameBoard(gameBoard);
+		
+		
+		while(true) {
+			Scanner scan = new Scanner(System.in);
+			System.out.print("Enter Your Position (1-9)");
+			int playerPosition = scan.nextInt();
+			placePiece(gameBoard, playerPosition, "player");
+			
+			Random random = new Random();
+			int computerPosition = random.nextInt(9) +1;
+			placePiece(gameBoard, computerPosition, "computer");
+			printGameBoard(gameBoard);
+		
+		}
+		
+	}
+	
+	public static void printGameBoard(char [][] gameBoard) {
+		for(char [] row: gameBoard) {
+			for(char c: row) {
+				System.out.print(c);
+			}
+			System.out.println();
+		} 
+	}
+	
+	public static void placePiece(char [][] gameBoard, int position, String user) {
+		char symbol = ' ';
+		
+		if(user.equals("player")) {
+			symbol = 'X';
+		}else if(user.equals("computer")){
+			symbol = 'O';
+		}
+		
+		switch(position) {
+			case 1: 
+				gameBoard[0][0] = symbol;
+				break;
+			case 2: 
+				gameBoard[0][2] = symbol;
+				break;
+			case 3: 
+				gameBoard[0][4] = symbol;
+				break;
+			case 4: 
+				gameBoard[2][0] = symbol;
+				break;
+			case 5: 
+				gameBoard[2][2] = symbol;
+				break;
+			case 6: 
+				gameBoard[2][4] = symbol;
+				break;
+			case 7: 
+				gameBoard[4][0] = symbol;
+				break;
+			case 8: 
+				gameBoard[4][2] = symbol;
+				break;
+			case 9: 
+				gameBoard[4][4] = symbol;
+				break;
+			default:
+				break;
+			
+			
+	}
+	}
+
+}
